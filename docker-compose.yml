@@ -1,4 +1,3 @@
----
 version: '3'
 
 services:
@@ -16,6 +15,9 @@ services:
     depends_on:
       - db
     image: wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wordpress_php:/var/www/html/wp-content
     ports:
       - "8080:80"
     restart: always
@@ -26,4 +28,10 @@ services:
       WORDPRESS_DB_NAME: wordpress
 volumes:
   db_data:
-...
+    driver: "local"
+    driver_opts:
+      type: none
+      device: $PWD/mysql_wordpress_db
+      o: bind
+  wordpress_data:
+    driver: local
