@@ -30,6 +30,7 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: cam1810
       WORDPRESS_DB_NAME: wordpress
+# La linea de volumes, guarda los archivos que se suban a la base de datos, en esa carpeta local.           
 volumes:
   db_data:
     driver: "local"
